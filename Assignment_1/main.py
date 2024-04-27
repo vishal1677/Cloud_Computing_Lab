@@ -1,6 +1,10 @@
-import webapp2
+from flask import Flask
 
-class MainPage(webapp2.RequestHandler) :
-  def get(self): 
-     self.response.write("Hello World")
-app = webapp2.WSGIApplication([("/",MainPage)],debug=True)
+app = Flask(__name__)
+
+@app.route('/')
+def main_page():
+  return "Hello World"
+
+if __name__ == '__main__':
+    app.run(debug=True,port=8080)
